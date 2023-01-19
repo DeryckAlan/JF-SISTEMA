@@ -1,0 +1,109 @@
+<!-- ==== Extends Base HTML ==== -->
+{% extends 'base.html' %}
+<!-- ==== Static Folder ==== -->
+{% load static %}
+<!-- ==== Title ==== -->
+{% block title %} JF Hub - QrCode JF {% endblock title %}
+<!-- ==== Navbar Content ==== -->
+{% block navbar-image %} src="{% static 'img/icons/qrcode.png' %}" {% endblock navbar-image %}
+{% block navbar-title %} QrCode JF {% endblock navbar-title %}
+
+<!-- ==== Page Content ==== -->
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="row pt-3">
+        <div class="col-md-3">
+            <button 
+            data-bs-toggle="modal" 
+            data-bs-target="#modalCreateQrcode"
+            hx-get="{% url 'qrform' %}"
+            hx-target="#formContent"
+            hx-swap="innerHTML"
+            type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCreateQrcode"><i class="fas fa-qrcode"></i>&nbsp;&nbsp;Novo QrCode</button>
+        </div>
+    </div>
+
+    <div class="row pt-3">
+        <div class="col-md-3">
+            <div >
+
+            </div>
+        </div>
+    </div>
+        
+    <div class="row p-3 justify-content-md-center">
+        <hr>
+        <table class="table pt-4 table-hover" style="text-align: center; font-size: 14px; overflow-y:scroll">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Projeto</th>
+                    <th>Painel</th>
+                    <th>Criado Por</th>
+                    <th colspan="3" style="width: 2%">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%load qr_code %}
+                {% for code in qrcodelist %}
+                <tr>
+                    <td>{{ code.id }}</td>
+                    <td>{{ code.projeto_nome }}</td>
+                    <td>{{ code.painel_nome }}</td>
+                    <td>User</td>
+                    <td>
+                        <a href="{% url 'qrdelete' code.id %}" class="btn btn-danger btn-sm" title="Deletar QrCode">
+                            <i class="fas fa-trash"></i> 
+                        </a>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modalUpdateQrcode{{ code.pk }}" title="Editar QrCode"><i class="fas fa-pen-to-square"></i></button>
+                        </a>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalOpenQrcode{{ code.pk }}" title="Ver QrCode"><i class="fas fa-magnifying-glass"></i></button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-success btn-sm" name="download" title="Baixar QrCode">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </td>
+                </tr>
+                <!-- ==== Include Modal ==== -->
+
+                <div class="modal fade" role="dialog" id="modalUpdateQrcode" tabindex="-1">
+                    <div class="modal-dialog modal-lg" id="updatecontent">
+                        <!-- ?HINT o conteúdo do modal será inserido aqui -->
+                    </div>
+                </div>
+
+                {% include "modal_openqrcode.html" %}
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<!-- ==== Include Modal Add Cliente ==== -->
+<div class="modal fade" role="dialog" id="modalCreateQrcode" tabindex="-1">
+    <div class="modal-dialog modal-lg" id="formContent">
+        <!-- ?HINT o conteúdo do modal será inserido aqui -->
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+<!-- ==== Sidebar Content ==== -->
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock sidebar %}
+
+<!-- ==== Scripts ==== -->
+<script src= "{% static 'js/clientes.js' %}" ></script>

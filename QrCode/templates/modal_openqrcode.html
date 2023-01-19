@@ -1,0 +1,28 @@
+{% load static %}
+
+<div class="modal fade" id="modalOpenQrcode{{ code.pk }}" tabindex="-1" aria-labelledby="modalOpenQrcodeLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" style= "border-width: 10px; border-color:#499e9d">
+            <div class="modal-header">
+                <h5 class="modal-title"><img src="{% static 'img/icons/qrcode.png' %}" alt="Logo" width="30" height="30" class="d-inline-block align-text-bottom"> <strong>{{ code.painel_nome }}</strong></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row mx-auto">
+                        {%load qr_code %}
+                        {% qr_from_text code.link size=3 image_format='png' error_correction=L %}
+                    </div>
+                    <div class="row mx-auto justify-content-center">
+                        {{ code.observacoes }}
+                    </div>
+                </div>
+            </div>
+            <!-- ==== Modal Footer ==== -->
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Download</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

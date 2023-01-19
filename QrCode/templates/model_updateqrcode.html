@@ -1,0 +1,22 @@
+{%load static %}
+{% load crispy_forms_tags %}
+<form action="{% url 'qrupdate' pk=code.pk %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+    <div class="modal-dialog modal-md">
+        <div class="modal-content" style= "border-width: 10px; border-color:#499e9d">
+            <div class="modal-header">
+                <h5 class="modal-title"><img src="{% static 'img/icons/qrcode.png' %}" alt="Logo" width="30" height="30" class="d-inline-block align-text-bottom"> <strong>Novo QrCode</strong></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid mx-auto">
+                    {% crispy QRcodeForm %}
+                </div>
+            </div>
+            <!-- ==== Modal Footer ==== -->
+            <div class="modal-footer justify-content-center">
+                <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Salvar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</form>

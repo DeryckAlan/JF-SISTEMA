@@ -1,0 +1,25 @@
+<!-- ==== Extends Base HTML ==== -->
+{% extends 'base.html' %}
+<!-- ==== Static Folder ==== -->
+{% load static %}
+<!-- ==== Title ==== -->
+{% block title %} JF Hub - Clientes {% endblock title %}
+<!-- ==== Navbar Content ==== -->
+{% block navbar-image %} src="{% static 'img/icons/clientes.png' %}" {% endblock navbar-image %}
+{% block navbar-title %} Clientes {% endblock navbar-title %}
+
+<!-- ==== Page Content ==== -->
+{% block content %}
+
+<h1>Teste Cliente</h1>
+
+
+{% endblock content %}
+
+<!-- ==== Sidebar Content ==== -->
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock sidebar %}
+
+<!-- ==== Scripts ==== -->
+<script src= "{% static 'js/clientes.js' %}" ></script>

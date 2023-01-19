@@ -1,0 +1,40 @@
+<!-- ==== Extends Base HTML ==== -->
+{% extends 'base.html' %}
+<!-- ==== Static Folder ==== -->
+{% load static %}
+{% load crispy_forms_tags %}
+<!-- ==== Title ==== -->
+{% block title %} JF Hub - Clientes {% endblock title %}
+<!-- ==== Navbar Content ==== -->
+{% block navbar-image %} src="{% static 'img/icons/qrcode.png' %}" {% endblock navbar-image %}
+{% block navbar-title %} Novo QrCode {% endblock navbar-title %}
+
+<!-- ==== Page Content ==== -->
+{% block content %}
+
+<form action="{% url 'qrform' %}" method="POST">
+    <div class='p-4'>
+        {% csrf_token %}
+        {% crispy QRcodeForm %}
+
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <button type="button" class="btn btn-secondary">Cancelar</button>
+        <input type='button' class="btn btn-secondary" value="Voltar" onClick="javascript:history.go(-1);">
+
+        {%load qr_code %}
+        {% if form.is_isvalid %}
+        <div class="position-left">{% qr_from_text link size=3 image_format="png" error_correction=L %}</div>
+        {% endif %}
+
+    </div>
+</form>
+
+{% endblock content %}
+
+<!-- ==== Sidebar Content ==== -->
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock sidebar %}
+
+<!-- ==== Scripts ==== -->
+

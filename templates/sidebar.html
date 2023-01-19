@@ -1,0 +1,102 @@
+{% load static %}
+
+<div class="sidebar">
+    <div class="sb-logo">
+        <img class="sb-logo-img" src="{% static 'img/icons/logoJF.png' %}" alt="logoJF">
+        <div class="logo-name">JF Hub</div>
+        <i class="fas fa-angles-left" id="sb-menu-btn"></i>
+    </div>
+    <ul class="nav-list">
+        <hr>    <!--********************-->
+        <li>
+            <a href="/">
+                <i class="fas fa-bars"></i>
+                <label class="link-name">Menu</label>
+                <span class="tooltip">Menu</span>
+            </a>
+        </li>
+        <hr>    <!--********************-->
+        <li>
+            <a href="/projetos/">
+                <i class="fas fa-chart-bar"></i>
+                <label class="link-name">Projetos</label>
+                <span class="tooltip">Projetos</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fas fa-handshake"></i>
+                <label class="link-name">Comercial</label>
+                <span class="tooltip">Comercial</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fas fa-warehouse"></i>
+                <label class="link-name">Armazém</label>
+                <span class="tooltip">Armazém</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fas fa-cart-shopping"></i>
+                <label class="link-name">Compras</label>
+                <span class="tooltip">Compras</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fas fa-people-arrows"></i>
+                <label class="link-name">RH</label>
+                <span class="tooltip">RH</span>
+            </a>
+        </li>
+        <hr>    <!--********************-->
+        <li>
+            <a href="/clientes/">
+                <i class="fas fa-industry"></i>
+                <label class="link-name">Clientes</label>
+            </a>
+        </li>
+        <li>
+            <a href="/colaboradores/">
+                <i class="fas fa-users"></i>
+                <label class="link-name">Colaboradores</label>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fas fa-boxes-stacked"></i>
+                <label class="link-name">Produtos</label>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fas fa-shop"></i>
+                <label class="link-name">Fornecedores</label>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fas fa-box-archive"></i>
+                <label class="link-name">Diversos</label>
+            </a>
+        </li>
+        <hr>    <!--********************-->
+        <li>
+            <a href="/admin/">
+                <i class="fas fa-user-gear"></i>
+                <label class="link-name">Admin</label>
+            </a>
+        </li>
+        <li>
+            <a href="/admin/">
+                <i class="fas fa-circle-info"></i>
+                <label class="link-name">Sobre</label>
+            </a>
+        </li>
+        <div class="footer-text text-center p-3">&copy {% now "Y" %} Copyright
+            <a class="text-dark" href="#" style="text-decoration: none;"><span class="text-warning">www.jfhub.com</span></a>
+        </div>
+    </ul>
+</div>
